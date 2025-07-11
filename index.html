@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>QnA Web Worker Example</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TensorFlow.js QnA in Web Worker</h1>
+
+    <label for="passage">Passage:</label>
+    <textarea id="passage"
+        rows="6">TensorFlow.js is a JavaScript library for machine learning in the browser and on Node.js.</textarea>
+
+    <label for="question">Question:</label>
+    <input type="text" id="question" value="What is TensorFlow.js?" />
+
+    <button id="ask">Ask</button>
+
+    <h2>Answer:</h2>
+    <textarea id="answer" rows="4" readonly></textarea>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
