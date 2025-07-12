@@ -6,9 +6,11 @@ importScripts(
 let modelPromise = null;
 
 async function init() {
-  await tf.setBackend('cpu');
-  await tf.ready();
+  // await tf.setBackend('cpu');
+  // await tf.ready();
   modelPromise = qna.load();
+  await modelPromise;
+  self.postMessage({ ready: true });
 }
 
 init();

@@ -6,15 +6,22 @@ const questionEl = document.getElementById('question');
 const answerEl = document.getElementById('answer');
 
 askBtn.addEventListener('click', () => {
-  const passage = passageEl.value.replaceAll('\n', ' '); 
+  const passage = passageEl.value.replaceAll('\n', ' ');
   const question = questionEl.value.replaceAll('\n', ' ');
 
   answerEl.value = 'Thinking...';
-
+  askBtn.disabled = true; 
   worker.postMessage({ question, passage });
 });
 
 worker.onmessage = (event) => {
+  if (event.data.ready) {
+    askBtn.disabled = false;
+    return;
+  }
+
+  askBtn.disabled = false;
+
   if (event.data.error) {
     answerEl.value = `Error: ${event.data.error}`;
   } else if (event.data.answers) {
